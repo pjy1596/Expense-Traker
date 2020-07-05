@@ -10,23 +10,23 @@ const form = document.querySelector(".form");
 //   { id: 3, text: "pay", amount: +350 },
 //   { id: 4, text: "allowance", amount: +50 },
 // ];
-
+let transactions = getFromLs();
 function getFromLs() {
   let transactions;
   if (localStorage.getItem("transactions") === null) {
     transactions = [];
   } else {
-    tansactions = JSON.parse(localStorage.getItem("transactions"));
+    transactions = JSON.parse(localStorage.getItem("transactions"));
   }
   return transactions;
 }
 
 function setToLs() {
-  localStorage.setItem("transactions", JSON.stringify(transaction));
+  localStorage.setItem("transactions", JSON.stringify(transactions);
 }
 function addTransactionDom(item) {
   const li = document.createElement("li");
-  li.innerHTML = `${item.text} <span>$${item.amount}</span><button class="delete-btn">X</button>`;
+  li.innerHTML = `${item.text} <span>$${item.amount}</span><button class="delete-btn" onclick='deleteListItem(event)'>X</button>`;
   li.classList.add(item.amount > 0 ? "plus" : "minus");
   li.style.marginBottom = "5px";
   moneyList.appendChild(li);
@@ -71,11 +71,11 @@ function addTransaction(e) {
   }
   e.preventDefault();
 }
-// function deleteListItem(e) {
-//   if ((e.target.className = "delete-btn")) {
-//     e.parentElement.remove();
-//   }
-// }
+function deleteListItem(e) {
+  if ((e.target.className = "delete-btn")) {
+    e.parentElement.remove();
+  }
+}
 form.addEventListener("submit", addTransaction);
 function init() {
   transactions.forEach((transaction) => addTransactionDom(transaction));
