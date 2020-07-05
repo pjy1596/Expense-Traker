@@ -22,7 +22,7 @@ function getFromLs() {
 }
 
 function setToLs() {
-  localStorage.setItem("transactions", JSON.stringify(transactions);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 function addTransactionDom(item) {
   const li = document.createElement("li");
