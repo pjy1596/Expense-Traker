@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+* {
+  box-sizing: border-box;
+}
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 150vh;
+}
+.container {
+  margin: 30px;
+  width: 350px;
+}
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 5px;
+}
+.inc-exp {
+  padding: 10px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.inc-exp > div {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+}
+.inc-exp > div:first-of-type {
+  border-right: 1px solid;
+}
+.incomeMoney {
+  color: #2ccc71;
+}
+.expenseMoney {
+  color: #c0392b;
+}
+.moneyList {
+  padding-left: 0px;
+}
+.moneyList-item.plus {
+  list-style: none;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 5px solid #2ccc71;
+}
+
+input {
+  border: 1px solid;
+
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+label {
+  display: block;
+}
+li {
+  position: relative;
+  background-color: white;
+}
+li:hover > .delete-btn {
+  opacity: 1;
+}
+.delete-btn {
+  background-color: #e74c3c;
+  padding: 2px 5px;
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+.btn {
+  background-color: #9c88ff;
+  width: 100%;
+  padding: 10px;
+  box-shadow: var(--box-shadow);
+  color: white;
+}
+button {
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+  border: transparent;
+}
+input:focus {
+  outline: none;
+  border: transparent;
+}
+li.plus {
+  list-style: none;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 5px solid #2ccc71;
+}
+li.minus {
+  list-style: none;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 5px solid #e74c3c;
+}
