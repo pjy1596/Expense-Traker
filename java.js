@@ -24,13 +24,6 @@ function getFromLs() {
 function setToLs() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
-function addTransactionDom(item) {
-  const li = document.createElement("li");
-  li.innerHTML = `${item.text} <span>$${item.amount}</span><button class="delete-btn" onclick='deleteListItem(event)'>X</button>`;
-  li.classList.add(item.amount > 0 ? "plus" : "minus");
-  li.style.marginBottom = "5px";
-  moneyList.appendChild(li);
-}
 
 function updateValues() {
   const amounts = transactions.map((transaction) => transaction.amount);
@@ -71,13 +64,38 @@ function addTransaction(e) {
   }
   e.preventDefault();
 }
-function deleteListItem(e) {
-  if ((e.target.className = "delete-btn")) {
-    e.parentElement.remove();
+function addTransactionDom(item) {
+  const li = document.createElement("li");
+  li.innerHTML = `${item.text}<span>$${item.amount}</span><button class="delete-btn" onclick='deleteListItem(this)'>X</button>`;
+  // 특이하게 onclick 저거에서 deleteListItem(안에 다른 거 쓰면 안 먹힘. event만 써야 됨)
+  li.classList.add(item.amount > 0 ? "plus" : "minus");
+  li.style.marginBottom = "5px";
+  moneyList.appendChild(li);
+}
+function deleteListItem(btn) {
+  // transactions = transactions.filter((transaction) => transaction.id !== id);
+  // 이거 익혀놓기!!
+  if ((btn.className = "delete-btn")) {
+    btn.parentElement.remove();
+    const transactions = getFromLs();
+    transactions.forEach((transaction, index) => {
+      if (
+        btn.parentElement.childNodes[0] === JSON.stringify(transaction.text)
+      ) {
+        transactions.splice(index, 1);
+        console.log("ddd");
+      } else {
+        console.log("ccc");
+        console.log(btn.parentElement.childNodes[0]);
+        console.log(JSON.stringify(transaction.text));
+      }
+    });
+    setToLs();
   }
 }
 form.addEventListener("submit", addTransaction);
 function init() {
+  // moneyList.innerHTML = "";
   transactions.forEach((transaction) => addTransactionDom(transaction));
   updateValues();
 }
